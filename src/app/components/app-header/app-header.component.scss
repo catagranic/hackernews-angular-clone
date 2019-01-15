@@ -1,0 +1,28 @@
+:host {
+  background-color: #ff6600;
+  width: 100%;
+  display: block;
+}
+.app-header {
+  > .wrapper {
+    > div {
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      padding: 0.1rem;
+      > img {
+        border: 1px solid white;
+        width: 18px;
+        height: 18px;
+        margin-right: 4px;
+      }
+      > h3 {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 13px;
+      }
+    }
+  }
+}
