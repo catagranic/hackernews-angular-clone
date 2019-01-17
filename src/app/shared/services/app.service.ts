@@ -19,9 +19,16 @@ export class AppService {
       )
   }
 
-  getSingleItem(id): Observable<any> {
+  getSingleItem(id: number): Observable<any> {
     return this.http
       .get(`${this.baseUrl}/item/${id}.json`).pipe(
+        map((response: Response) => response)
+      )
+  }
+
+  getComment(id: number): Observable<any> {
+    return this.http
+      .get(`${this.baseUrl}/${id}.json`).pipe(
         map((response: Response) => response)
       )
   }

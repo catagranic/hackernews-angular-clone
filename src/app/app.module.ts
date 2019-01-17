@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // containers
 import { AppComponent } from './containers/app/app.component';
+import { CommentComponent } from './containers/comments/comment.component';
 
 // components
 import { AppHeaderComponent } from './components/app-header/app-header.component';
@@ -18,7 +19,8 @@ import { AppService } from './shared/services/app.service';
   declarations: [
     AppComponent,
     AppHeaderComponent,
-    AppNavComponent
+    AppNavComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
