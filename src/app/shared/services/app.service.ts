@@ -28,7 +28,7 @@ export class AppService {
 
   getComment(id: number): Observable<any> {
     return this.http
-      .get(`${this.baseUrl}/${id}.json`).pipe(
+      .get(`${this.baseUrl}/item/${id}.json`).pipe(
         map((response: Response) => response)
       )
   }

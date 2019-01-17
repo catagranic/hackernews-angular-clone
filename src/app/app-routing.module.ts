@@ -3,9 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './containers/app/app.component';
 import { CommentComponent } from './containers/comments/comment.component';
+import { NewsComponent } from './containers/news/news.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: AppComponent },
+  { path: '', pathMatch: 'full', component: NewsComponent },
   { path: 'comments/:id', component: CommentComponent}
 ];
 

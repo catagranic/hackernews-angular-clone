@@ -14,13 +14,15 @@ import { AppNavComponent } from './components/app-nav/app-nav.component';
 
 // providers 
 import { AppService } from './shared/services/app.service';
+import { NewsComponent } from './containers/news/news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
     AppNavComponent,
-    CommentComponent
+    CommentComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
