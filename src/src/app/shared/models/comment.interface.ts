@@ -1,4 +1,5 @@
 export interface Comment {
+  active: boolean,
   by: string,
   id: number,
   parent: number,
