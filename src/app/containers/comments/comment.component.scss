@@ -2,4 +2,25 @@
   background-color: #f6f6ef;
   font-size: 12px;
   padding: 3px 3px 0px 3px;
+  .comment-block {
+    margin-left: 15px;
+    .top-comment {
+      color: #828282;
+      font-size: 11px;
+      position: relative;
+      .caret {
+        position: absolute;
+        left: -14px;
+      }
+      .comment-date + span {
+        cursor: pointer;
+      }
+    }
+    &:last-of-type {
+      padding-bottom: 25px;
+    }
+    &.padding-bottom {
+      padding-bottom: 25px;
+    }
+  }
 }
