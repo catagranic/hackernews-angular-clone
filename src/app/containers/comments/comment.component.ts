@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { AppService } from 'src/app/shared/services/app.service';
-import { topStory } from 'src/app/shared/models/top-story.interface';
+import { AppService } from '../../shared/services/app.service';
+import { topStory } from '../../shared/models/top-story.interface';
 
-import { Comment } from '@angular/compiler';
+import { Comment } from '../../shared/models/comment.interface';
 
 @Component({
   selector: 'comment',
@@ -53,7 +53,7 @@ export class CommentComponent implements OnInit {
         this.story = data;
         this.story.kids.forEach(id => {
           this.appService
-            .getComment(id)
+            .getSingleItem(id)
             .subscribe(data => this.comments.push({ active: true, ...data }))
         })
       })
