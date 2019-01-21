@@ -1,4 +1,5 @@
 export interface topStory {
+  index: number,
   by: string,
   descendants: number,
   id: number,

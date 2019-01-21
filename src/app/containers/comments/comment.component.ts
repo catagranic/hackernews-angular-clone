@@ -24,10 +24,10 @@ import { Comment } from '../../shared/models/comment.interface';
           <span *ngIf="comment.active" class="caret">&#9650;</span>
           {{ comment.by }} 
           <span class="comment-date">{{ comment.time }}</span>
-          [<span (click)="toggleComment(i)">
-            <span *ngIf="!comment.active">+</span>
-            <span *ngIf="comment.active">-</span>
-          </span>]
+          <span (click)="toggleComment(i)">
+            <span *ngIf="!comment.active"> [+]</span>
+            <span *ngIf="comment.active"> [-]</span>
+          </span>
         </div>
         <p
           *ngIf="comment.active"
@@ -47,6 +47,10 @@ export class CommentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getComments()
+  }
+
+  getComments() {
     this.appService
       .getSingleItem(+this.route.snapshot.paramMap.get('id'))
       .subscribe(data => {
@@ -59,7 +63,7 @@ export class CommentComponent implements OnInit {
       })
   }
 
-  toggleComment(index) {
+  toggleComment(index: number) {
     this.comments[index].active = !this.comments[index].active;
   }
 

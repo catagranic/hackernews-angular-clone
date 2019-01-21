@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 // containers
 import { AppComponent } from './containers/app/app.component';
 import { CommentComponent } from './containers/comments/comment.component';
+import { UserComponent } from './containers/user/user.component';
 
 // components
 import { AppHeaderComponent } from './components/app-header/app-header.component';
@@ -22,7 +23,8 @@ import { NewsComponent } from './containers/news/news.component';
     AppHeaderComponent,
     AppNavComponent,
     CommentComponent,
-    NewsComponent
+    NewsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

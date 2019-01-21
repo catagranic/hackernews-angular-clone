@@ -26,4 +26,11 @@ export class AppService {
       )
   }
 
+  getUser(name: string): Observable<any> {
+    return this.http
+      .get(`${this.baseUrl}/user/${name}.json`).pipe(
+        map((response: Response) => response)
+      )
+  }
+
 }
