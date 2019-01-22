@@ -15,7 +15,7 @@ import { topStory } from '../../shared/models/top-story.interface';
         </a>
         <p class="extra">{{ story.score }} points by <a routerLink="/user/{{ story.by }}">{{ story.by }}</a>&nbsp;<a routerLink="/comments/{{ story.id }}">(comments)</a></p>
       </div>
-      <h3 (click)="reload()">More</h3>
+      <h3 (click)="nextPage()">More</h3>
     </div>
   `
 })
@@ -53,7 +53,7 @@ export class NewsComponent implements OnInit {
     
   }
 
-  reload() {
+  nextPage() {
     this.router.navigate(['/news'], { queryParams: { p: this.currentPage += 1 } });
     this.topStories = [];
     this.getNews();
