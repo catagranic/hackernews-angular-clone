@@ -40,7 +40,7 @@ export class NewsComponent implements OnInit {
 
   getNews() {
     this.appService
-      .getTopStories(this.currentPage * 30 - 30, this.currentPage * 30)
+      .getTopStories(this.currentPage, 30)
       .subscribe((data: number[]) => {
         let index = this.currentPage * 30 - 29;
         data.forEach((item) => {

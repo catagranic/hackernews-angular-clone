@@ -12,10 +12,10 @@ export class AppService {
     private http: HttpClient
   ) {}
 
-  getTopStories(first: number, last: number): Observable<any> {
+  getTopStories(page: number, totalItems: number): Observable<any> {
     return this.http
       .get<[any]>(`${this.baseUrl}/topstories.json`).pipe(
-        map(response => response.slice(first, last))
+        map(response => response.splice(30 * (page - 1), totalItems))
       )
   }
 
