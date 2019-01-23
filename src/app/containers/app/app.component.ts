@@ -10,8 +10,4 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class AppComponent {
-
-  constructo
-
-}
+export class AppComponent {}

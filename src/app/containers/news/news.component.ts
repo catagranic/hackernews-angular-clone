@@ -31,20 +31,19 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getNews();
-
     this.route.queryParams.subscribe(params => {
-      +params['p'] ? this.currentPage = +params['p'] : this.currentPage = 1;
+      params['p'] ? this.currentPage = +params['p'] : this.currentPage = 1;
     });
+
+    this.getNews();
   }
 
   getNews() {
     this.appService
-      .getTopStories()
+      .getTopStories(this.currentPage * 30 - 30, this.currentPage * 30)
       .subscribe((data: number[]) => {
-        let topStories = data.slice((this.currentPage * 30 - 30), (this.currentPage * 30))
         let index = this.currentPage * 30 - 29;
-        topStories.forEach((item) => {
+        data.forEach((item) => {
           this.appService
             .getSingleItem(item)
             .subscribe((data) => this.topStories.push({index: index++, ...data}))

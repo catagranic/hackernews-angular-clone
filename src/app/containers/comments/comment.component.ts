@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppService } from '../../shared/services/app.service';
@@ -37,6 +37,9 @@ import { Comment } from '../../shared/models/comment.interface';
   `
 })
 export class CommentComponent implements OnInit {
+
+  @Input()
+  title: string = 'comment';
 
   story: topStory;
   comments: Comment[] = [];
