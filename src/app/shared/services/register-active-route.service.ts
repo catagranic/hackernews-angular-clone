@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 export interface ActiveRouteData {
-  title: string,
-  isLastStep: boolean;
+  title: string
 }
 
 @Injectable()
@@ -14,5 +13,6 @@ export class RegisterActiveRouteService {
 
   registerActiveRouteData(data) {
     this.routeData$.next(data);
+    console.log(this.routeData$)
   }
 }

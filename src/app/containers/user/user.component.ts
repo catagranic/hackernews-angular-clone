@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
 
   getUser() {
     this.appService
-      .getUser(this.route.snapshot.paramMap.get('name'))
+      .getSingleItem(this.route.snapshot.paramMap.get('name'))
       .subscribe(data => this.user = data)
   }
 

@@ -1,3 +1,13 @@
+:host {
+  background-color: #f6f6ef;
+  display: block;
+  padding-bottom: 10px;
+  h3 {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 3px 3px 0px 3px;
+  }
+}
 .top-story {
   background-color: #f6f6ef;
   font-size: 12px;
@@ -25,5 +35,14 @@
     color: #828282;
     margin: 3px 0px 0px 28px;
     padding-bottom: 5px;
+    a {
+      text-decoration: none;
+      color: #828282;
+      &:hover,
+      &:active {
+        color: #828282;
+        text-decoration: underline;
+      }
+    }
   }
 }
