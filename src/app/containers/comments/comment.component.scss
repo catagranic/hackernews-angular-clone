@@ -16,11 +16,9 @@
         cursor: pointer;
       }
     }
-    &:last-of-type {
-      padding-bottom: 25px;
-    }
     &.padding-bottom {
       padding-bottom: 25px;
     }
   }
+  padding-bottom: 25px;
 }

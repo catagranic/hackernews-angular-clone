@@ -34,10 +34,14 @@
         }
       }
       .title {
-        display: flex;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
         margin-left: auto;
-        flex-direction: column;
-        justify-content: center;
+        h3 {
+          margin: 0 3px 0 0;
+          font-size: 13px;
+          text-align: right;
+        }
       }
     }
   }

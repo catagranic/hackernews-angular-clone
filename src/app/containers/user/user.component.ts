@@ -13,7 +13,7 @@ import { User } from '../../shared/models/user.interface';
       <p><span>user:</span> <span>{{ user.id }}</span></p>
       <p><span>created:</span> <span class="date">{{ user.created }}</span></p>
       <p><span>karma:</span> <span>{{ user.karma }}</span></p>
-      <p><span>about:</span> <span>{{ user.about }}</span></p>
+      <p><span>about:</span> <span [innerHtml]="user.about"></span></p>
     </div>
   `
 })

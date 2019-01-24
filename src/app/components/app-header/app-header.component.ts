@@ -11,12 +11,12 @@ import { RegisterActiveRouteService } from '../../shared/services/register-activ
           <img src="assets/img/y18.gif">
           <h3><a routerLink="news">Hacker news</a></h3>
           <app-nav></app-nav>
-          <app-title
-            *ngIf="title"
-            class="title"
-            [title]="title">
-            {{ title }}
-          </app-title>
+          <div *ngIf="title" class="title">
+            <h3>{{ this.title }}</h3>
+            <app-icon
+              [icon]="icon">
+            </app-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -24,6 +24,7 @@ import { RegisterActiveRouteService } from '../../shared/services/register-activ
 })
 export class AppHeaderComponent implements OnInit {
   title: string;
+  icon: string;
 
   constructor(
     private routeData: RegisterActiveRouteService
@@ -32,6 +33,24 @@ export class AppHeaderComponent implements OnInit {
   ngOnInit() {
     this.routeData.routeData$.subscribe(data => {
       this.title = data ? data.title : null;
+      this.changeIcon(this.title);
     });
   }
+
+  changeIcon(event) {
+    switch (event) {
+      case 'comments':
+        this.icon = 'chat_bubble';
+        break;
+      case 'news':
+        this.icon = 'computer';
+        break;
+      case 'user':
+        this.icon = 'face';
+        break;
+      default:
+        this.icon = 'computer';
+    }
+  }
+
 }

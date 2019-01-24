@@ -32,7 +32,7 @@ import { Comment } from '../../shared/models/comment.interface';
         </div>
         <p
           *ngIf="comment.active"
-          class="comment-text">{{ comment.text }}</p>
+          class="comment-text" [innerHTML]="comment.text"></p>
       </div>
     </div>
   `
@@ -55,11 +55,13 @@ export class CommentComponent implements OnInit {
       .getSingleItem(+this.route.snapshot.paramMap.get('id'))
       .subscribe(data => {
         this.story = data;
-        this.story.kids.forEach(id => {
-          this.appService
-            .getSingleItem(id)
-            .subscribe(data => this.comments.push({ active: true, ...data }))
-        })
+        if (this.story.kids) {
+          this.story.kids.forEach(id => {
+            this.appService
+              .getSingleItem(id)
+              .subscribe(data => this.comments.push({ active: true, ...data }))
+          })
+        }
       })
   }
 
