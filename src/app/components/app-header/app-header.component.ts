@@ -8,8 +8,10 @@ import { RegisterActiveRouteService } from '../../shared/services/register-activ
     <div class="app-header">
       <div class="wrapper">
         <div>
-          <img src="assets/img/y18.gif">
-          <h3><a routerLink="news">Hacker news</a></h3>
+          <a routerLink="news">
+            <img src="assets/img/y18.gif">
+            <h3>Hacker news</h3>
+          </a>
           <app-nav></app-nav>
           <div *ngIf="title" class="title">
             <h3>{{ this.title }}</h3>

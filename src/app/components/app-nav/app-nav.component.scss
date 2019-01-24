@@ -8,7 +8,7 @@
     list-style: none;
     > li {
       > a {
-        color: #222222;
+        color: #b04600;
         text-decoration: none;
         font-size: 12px;
         padding: 0.1rem 0.5rem;
@@ -16,6 +16,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
+        pointer-events: none;
         &:hover,
         &.active {
           color: #fff;
@@ -29,10 +30,6 @@
           position: absolute;
           right: 0;
         }
-      }
-      &:nth-child(2),
-      &:last-child {
-        pointer-events: none;
       }
     }
   }
