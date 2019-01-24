@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 // containers
 import { AppComponent } from './containers/app/app.component';
 import { CommentComponent } from './containers/comments/comment.component';
-import { UserComponent } from './containers/user/user.component';
 
 // components
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { AppNavComponent } from './components/app-nav/app-nav.component';
+import { TitleComponent } from './components/app-title/title.component'; 
 
 // providers 
+import { RegisterActiveRouteService } from './shared/services/register-active-route.service';
 import { AppService } from './shared/services/app.service';
 import { NewsComponent } from './containers/news/news.component';
 
@@ -22,9 +23,9 @@ import { NewsComponent } from './containers/news/news.component';
     AppComponent,
     AppHeaderComponent,
     AppNavComponent,
+    TitleComponent,
     CommentComponent,
-    NewsComponent,
-    UserComponent
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { NewsComponent } from './containers/news/news.component';
     HttpClientModule
   ],
   providers: [
-    AppService
+    AppService,
+    RegisterActiveRouteService
   ],
   bootstrap: [AppComponent]
 })

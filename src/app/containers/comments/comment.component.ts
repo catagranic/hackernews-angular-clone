@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { RegisterActiveRouteService } from '../../shared/services/register-active-route.service';
 import { AppService } from '../../shared/services/app.service';
 import { topStory } from '../../shared/models/top-story.interface';
 
@@ -24,10 +25,10 @@ import { Comment } from '../../shared/models/comment.interface';
           <span *ngIf="comment.active" class="caret">&#9650;</span>
           {{ comment.by }} 
           <span class="comment-date">{{ comment.time }}</span>
-          <span (click)="toggleComment(i)">
-            <span *ngIf="!comment.active"> [+]</span>
-            <span *ngIf="comment.active"> [-]</span>
-          </span>
+          [<span (click)="toggleComment(i)">
+            <span *ngIf="!comment.active">+</span>
+            <span *ngIf="comment.active">-</span>
+          </span>]
         </div>
         <p
           *ngIf="comment.active"
@@ -38,35 +39,32 @@ import { Comment } from '../../shared/models/comment.interface';
 })
 export class CommentComponent implements OnInit {
 
-  @Input()
-  title: string = 'comment';
-
   story: topStory;
   comments: Comment[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private appService: AppService
+    private appService: AppService,
+    private activeRouteService: RegisterActiveRouteService
   ) {}
 
   ngOnInit() {
-    this.getComments()
-  }
+    console.log(this.route.routeConfig)
+    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.path);
 
-  getComments() {
     this.appService
       .getSingleItem(+this.route.snapshot.paramMap.get('id'))
       .subscribe(data => {
         this.story = data;
         this.story.kids.forEach(id => {
           this.appService
-            .getSingleItem(id)
+            .getComment(id)
             .subscribe(data => this.comments.push({ active: true, ...data }))
         })
       })
   }
 
-  toggleComment(index: number) {
+  toggleComment(index) {
     this.comments[index].active = !this.comments[index].active;
   }
 

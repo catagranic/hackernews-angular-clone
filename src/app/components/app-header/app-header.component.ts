@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RegisterActiveRouteService } from '../../shared/services/register-active-route.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,27 @@ import { Component, Input } from '@angular/core';
           <img src="assets/img/y18.gif">
           <h3>Hacker news</h3>
           <app-nav></app-nav>
+          <app-title
+            *ngIf="title"
+            class="title"
+            [title]="title">
+            {{ title }}
+          </app-title>
         </div>
       </div>
     </div>
   `
 })
-export class AppHeaderComponent {}
+export class AppHeaderComponent implements OnInit {
+  title: string;
+
+  constructor(
+    private routeData: RegisterActiveRouteService
+  ) {}
+
+  ngOnInit() {
+    this.routeData.routeData$.subscribe(data => {
+      this.title = data ? data.title : null;
+    });
+  }
+}
