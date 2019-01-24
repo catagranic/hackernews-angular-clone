@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RegisterActiveRouteService } from '../../shared/services/register-active-route.service';
 import { AppService } from '../../shared/services/app.service';
+import { RegisterActiveRouteService } from '../../shared/services/register-active-route.service';
 import { topStory } from '../../shared/models/top-story.interface';
 
 import { Comment } from '../../shared/models/comment.interface';
@@ -49,8 +49,7 @@ export class CommentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.route.routeConfig)
-    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.path);
+    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.data);
 
     this.appService
       .getSingleItem(+this.route.snapshot.paramMap.get('id'))
@@ -58,7 +57,7 @@ export class CommentComponent implements OnInit {
         this.story = data;
         this.story.kids.forEach(id => {
           this.appService
-            .getComment(id)
+            .getSingleItem(id)
             .subscribe(data => this.comments.push({ active: true, ...data }))
         })
       })

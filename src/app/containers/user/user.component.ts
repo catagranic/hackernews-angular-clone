@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AppService } from '../../shared/services/app.service';
+import { RegisterActiveRouteService } from '../../shared/services/register-active-route.service';
 import { User } from '../../shared/models/user.interface';
 
 @Component({
@@ -22,17 +23,21 @@ export class UserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private appService: AppService
+    private appService: AppService,
+    private activeRouteService: RegisterActiveRouteService
   ) {}
 
   ngOnInit() {
+    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.data);
     this.getUser()
   }
 
   getUser() {
     this.appService
-      .getSingleItem(this.route.snapshot.paramMap.get('name'))
-      .subscribe(data => this.user = data)
+      .getUser(this.route.snapshot.paramMap.get('name'))
+      .subscribe(data => {
+        this.user = data
+      })
   }
 
 }

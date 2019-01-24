@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.path);
+    this.activeRouteService.registerActiveRouteData(this.route.routeConfig.data);
     this.getNews();
     this.route.queryParams.subscribe(params => {
       params['p'] ? this.currentPage = +params['p'] : this.currentPage = 1;

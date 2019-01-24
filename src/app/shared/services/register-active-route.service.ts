@@ -13,6 +13,5 @@ export class RegisterActiveRouteService {
 
   registerActiveRouteData(data) {
     this.routeData$.next(data);
-    console.log(this.routeData$)
   }
 }
